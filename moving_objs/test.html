@@ -36,17 +36,6 @@
     init();
     animate();
 
-    // var render = function () {
-    //     requestAnimationFrame( render );
-
-    //     cube.rotation.x += 0.1;
-    //     cube.rotation.y += 0.1;
-
-    //     renderer.render(scene, camera);
-    //   };
-
-    //   render();
-
 
 
     function init() {
@@ -66,23 +55,35 @@
       //added cube
 
       var geometry = new THREE.BoxGeometry( 10, 10, 10 );
-      var material = new THREE.MeshBasicMaterial( { color: 0xaa4d39 } );
+      var material = new THREE.MeshBasicMaterial( { color: 0xaa4d39 } ); //middle red cube
       cube = new THREE.Mesh( geometry, material );
       cube.position.set( 100,20,0);
       scene.add( cube );
 
 
       var geometry2 = new THREE.BoxGeometry( 100, 10, 10 );
-      var material2 = new THREE.MeshBasicMaterial( { color: 0x27586b } );
+      var material2 = new THREE.MeshBasicMaterial( { color: 0x27586b } ); // blue cube
       cube2 = new THREE.Mesh( geometry2, material2);
       cube2.position.set( 180,20,10);
       scene.add( cube2 );
 
       var geometry3 = new THREE.BoxGeometry( 100, 10, 10 );
-      var material3 = new THREE.MeshBasicMaterial( { color: 0x27586b } );
-      cube3 = new THREE.Mesh( geometry2, material2);
+      var material3 = new THREE.MeshBasicMaterial( { color: 0x6e9b34 } ); // green cube
+      cube3 = new THREE.Mesh( geometry3, material3);
       cube3.position.set( 180,20,-10);
       scene.add( cube3 );
+
+      var sphereGeo1 = new THREE.SphereGeometry( 10, 32,32);
+      var sphereMat1 = new THREE.MeshBasicMaterial( { color: 0xaa4d39 } ); // red circle
+      sphere1 = new THREE.Mesh( sphereGeo1, sphereMat1 );
+      sphere1.position.set( 0,20,200);
+      scene.add( sphere1 );
+
+      var sphereGeo2 = new THREE.SphereGeometry( 7, 32,32);
+      var sphereMat2 = new THREE.MeshBasicMaterial( { color: 0x6e9b34 } ); // red circle
+      sphere2 = new THREE.Mesh( sphereGeo2, sphereMat2 );
+      sphere2.position.set( 30,20,200);
+      scene.add( sphere2 );
 
 
 
@@ -176,11 +177,11 @@
         // cube.position.y += 0.1;
         // cube.rotation.y += 0.1;
         cube.position.x -= 0.01;
+        sphere1.position.z -= 0.01;
+        sphere2.position.z -= 0.02;
 
         cube2.position.x -= 0.015;
         cube3.position.x -= 0.02;
-
-      // renderer.render(scene, camera);
 
       effect.render(scene, camera);
     }
