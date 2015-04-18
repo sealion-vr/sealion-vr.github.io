@@ -179,6 +179,14 @@
       map: THREE.ImageUtils.loadTexture('bao.jpg'),
     })
 
+    var ganeshpic = new THREE.MeshLambertMaterial({
+      map: THREE.ImageUtils.loadTexture('ganesh.jpg'),
+    }) 
+
+    var andrewpic = new THREE.MeshLambertMaterial({
+      map: THREE.ImageUtils.loadTexture('andrew.jpg'),
+    }) 
+
     var greenMaterial = new THREE.MeshBasicMaterial( { color: 0x00FF00, transparent:true }); //green
     var multigreenMaterial = [greenMaterial, wireframeMaterial];
 
@@ -191,6 +199,16 @@
     [baopic] );
     bao.position.set(39, 15, -1);
     scene.add( bao );
+
+    var ganesh = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(16, 25, .1, 1, 1, 1),
+    [ganeshpic] );
+    ganesh.position.set(-05, 15, -35);
+    scene.add( ganesh );
+
+    var andrew = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(20, 25, .1, 1, 1, 1),
+    [andrewpic] );
+    andrew.position.set(-05, 15, 35);
+    scene.add( andrew );
 
     var wall1 = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(100, 50, 5, 1, 1, 1),
     [ bricks ] );
