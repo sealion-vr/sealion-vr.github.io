@@ -60,6 +60,8 @@
       controls.noZoom = true;
       controls.noPan = true;
 
+      var bao;
+
       function setOrientationControls(e) {
         if (!e.alpha) {
           return;
@@ -195,7 +197,7 @@
     marko.position.set(-39, 15, -1);
     scene.add( marko );
 
-    var bao = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(.1, 23, 20, 1, 1, 1),
+    bao = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(.1, 23, 20, 1, 1, 1),
     [baopic] );
     bao.position.set(39, 15, -1);
     scene.add( bao );
@@ -280,6 +282,10 @@
 
       update(clock.getDelta());
       render(clock.getDelta());
+
+      bao.position.x += 0.01;
+
+      render.renderer (scene,camera);
     }
 
     function fullscreen() {
