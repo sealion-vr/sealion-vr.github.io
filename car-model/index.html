@@ -116,48 +116,31 @@
       // adding car object
 
     loader = new THREE.JSONLoader();
-<<<<<<< HEAD
     var meshCar;
-=======
 
 
-
->>>>>>> 87f8e279342e06bdd628869407843b0a78aebf00
     loader.load('car.js', function (geometry, materials) {
       // debugger
       var material = new THREE.MeshLambertMaterial({
-        map: THREE.ImageUtils.loadTexture('gtare.jpg'),   
+        map: THREE.ImageUtils.loadTexture('gtare.jpg'),
         colorAmbient: [0.480000026226044, 0.480000026226044, 0.480000026226044],
         colorDiffuse: [0.480000026226044, 0.480000026226044, 0.480000026226044],
         colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421]
       });
 
       // debugger
-      
-<<<<<<< HEAD
+
       meshCar = new THREE.Mesh(
-=======
-      carmesh = new THREE.Mesh(
->>>>>>> 87f8e279342e06bdd628869407843b0a78aebf00
         geometry,
         material
       );
 
-<<<<<<< HEAD
-      meshCar.receiveShadow = true;
-      meshCar.castShadow = true;
-      meshCar.rotation.y = -Math.PI/5;
-
-      scene.add(meshCar);
-      render(); 
-=======
       carmesh.receiveShadow = true;
       carmesh.castShadow = true;
       // carmesh.rotation.y = -Math.PI/5;
 
       scene.add(carmesh);
-      // render(); 
->>>>>>> 87f8e279342e06bdd628869407843b0a78aebf00
+
     });
 
     }
@@ -214,7 +197,7 @@
        // var frameNumer = requestAnimationFrame( render );
 
 
- 
+
 
       effect.render(scene, camera);
     }
@@ -231,7 +214,7 @@
       if ((timer > 5) && (timer < 7)){
         carmesh.position.z += 4;
         carmesh.rotation.z += 0.01;
-      } 
+      }
 
       if ((timer > 7) && (carmesh.rotation.y < 1.8)) {
         carmesh.rotation.y += 0.01;
