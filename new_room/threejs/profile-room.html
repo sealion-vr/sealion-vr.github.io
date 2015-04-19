@@ -366,20 +366,20 @@
       update(clock.getDelta());
       render(clock.getDelta());
 
-      var timer = 5 + clock.getElapsedTime();
-      
+      var timer = clock.getElapsedTime();
+      var startTimer = 5;
 
-      if ((timer > 1) && (timer < 7)) {
+      if ((timer > (startTimer + 1)) && (timer < (startTimer +  7))) {
         camera.position.x -= 0.1;
         camera.position.z += 0.1;
       };
       
-      if ((timer > 7) && (timer < 25)) {
+      if ((timer > (startTimer + 7)) && (timer < (startTimer + 25))) {
         camera.position.x -= 0.1;
         // camera.position.z += 0.1;
       };
 
-      if ((timer > 25) && (timer < 32)) {
+      if ((timer > (startTimer + 25)) && (timer < (startTimer + 32))) {
         // camera.position.x -= 0.1;
         camera.position.z += 0.1;
       };
