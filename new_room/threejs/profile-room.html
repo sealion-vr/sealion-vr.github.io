@@ -30,6 +30,9 @@
     var camera, scene, renderer;
     var effect, controls;
     var element, container;
+    var meshCar;
+
+    var loader = new THREE.JSONLoader();
 
     var clock = new THREE.Clock();
 
@@ -47,7 +50,7 @@
       scene = new THREE.Scene();
 
       camera = new THREE.PerspectiveCamera(90, 1, 0.001, 700);
-      camera.position.set( 0, 15, 0);
+      camera.position.set( 0, 85, 0);
       scene.add(camera);
 
       controls = new THREE.OrbitControls(camera, element);
@@ -106,7 +109,7 @@
       texture.anisotropy = renderer.getMaxAnisotropy();
 
       var material = new THREE.MeshPhongMaterial({
-        color: 0xffffff,
+        color: 0x000000,
         specular: 0xffffff,
         shininess: 20,
         shading: THREE.FlatShading,
@@ -287,7 +290,6 @@
     floor.position.set(-85,0,80);
     scene.add(floor);
    
-
     // var wall2 = THREE.SceneUtils.createMultiMaterialObject( new THREE.PlaneGeometry(200, 100, 100, 1, 1, 1),
     // multiMaterial );
     // wall2.position.set(10, 5, -50);
@@ -297,8 +299,8 @@
 
     // Adding the car object
 
-    loader = new THREE.JSONLoader();
-    var meshCar;
+
+
     loader.load('car.js', function (geometry, materials) {
       // debugger
       var material = new THREE.MeshLambertMaterial({
@@ -308,12 +310,14 @@
         colorSpecular: [0.8999999761581421, 0.8999999761581421, 0.8999999761581421]
       });
 
-      // debugger
+      // debugger;
       
       meshCar = new THREE.Mesh(
         geometry,
         material
       );
+
+      // console.log(meshCar)
 
       meshCar.scale.x = 0.2;
       meshCar.scale.y = 0.2;
@@ -323,14 +327,12 @@
 
       meshCar.receiveShadow = true;
       meshCar.castShadow = true;
-      meshCar.rotation.y = -Math.PI/5;
+      // meshCar.rotation.y = -Math.PI/5;
 
       scene.add(meshCar);
-      render(); 
+      render();
       // debugger;
     });
-
-
 
       window.addEventListener('resize', resize, false);
       setTimeout(resize, 1);
@@ -357,7 +359,6 @@
 
     function render(dt) {
       effect.render(scene, camera);
-
     }
 
     function animate(t) {
@@ -366,23 +367,26 @@
       update(clock.getDelta());
       render(clock.getDelta());
 
-      var timer = clock.getElapsedTime();
-      var startTimer = 5;
+      meshCar.rotation.y += 0.01
+      // debugger;
 
-      if ((timer > (startTimer + 1)) && (timer < (startTimer +  7))) {
-        camera.position.x -= 0.1;
-        camera.position.z += 0.1;
-      };
+      // var timer = clock.getElapsedTime();
+      // var startTimer = 5;
+
+      // if ((timer > (startTimer + 1)) && (timer < (startTimer +  7))) {
+      //   camera.position.x -= 0.1;
+      //   camera.position.z += 0.1;
+      // };
       
-      if ((timer > (startTimer + 7)) && (timer < (startTimer + 25))) {
-        camera.position.x -= 0.1;
-        // camera.position.z += 0.1;
-      };
+      // if ((timer > (startTimer + 7)) && (timer < (startTimer + 25))) {
+      //   camera.position.x -= 0.1;
+      //   // camera.position.z += 0.1;
+      // };
 
-      if ((timer > (startTimer + 25)) && (timer < (startTimer + 32))) {
-        // camera.position.x -= 0.1;
-        camera.position.z += 0.1;
-      };
+      // if ((timer > (startTimer + 25)) && (timer < (startTimer + 32))) {
+      //   // camera.position.x -= 0.1;
+      //   camera.position.z += 0.1;
+      // };
 
 
       // renderer.render(scene, camera);
