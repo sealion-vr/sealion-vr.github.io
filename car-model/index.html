@@ -25,6 +25,7 @@
   <script src="StereoEffect.js"></script>
   <script src="DeviceOrientationControls.js"></script>
   <script src="OrbitControls.js"></script>
+  <script src="Tween.js"></script>
 
   <script>
     var camera, scene, renderer;
@@ -35,6 +36,8 @@
 
     init();
     animate();
+
+    var carmesh;
 
     function init() {
       renderer = new THREE.WebGLRenderer();
@@ -113,7 +116,9 @@
       // adding car object
 
     loader = new THREE.JSONLoader();
-    var mesh;
+
+
+
     loader.load('car.js', function (geometry, materials) {
       // debugger
       var material = new THREE.MeshLambertMaterial({
@@ -125,17 +130,17 @@
 
       // debugger
       
-      mesh = new THREE.Mesh(
+      carmesh = new THREE.Mesh(
         geometry,
         material
       );
 
-      mesh.receiveShadow = true;
-      mesh.castShadow = true;
-      mesh.rotation.y = -Math.PI/5;
+      carmesh.receiveShadow = true;
+      carmesh.castShadow = true;
+      // carmesh.rotation.y = -Math.PI/5;
 
-      scene.add(mesh);
-      render(); 
+      scene.add(carmesh);
+      // render(); 
     });
 
     }
@@ -163,11 +168,84 @@
 
     function render(dt) {
 
+      // debugger
+
+      // var frameNumer = requestAnimationFrame( render );
+
+      // if (carmesh.position.y < 40){
+      //   carmesh.position.y += 0.1;
+      // } else {
+      //   carmesh.position.z += 4;
+      // }
+
+      // if carmesh.position.z
+
+      // console.log(carmesh.position.z);
+
+
+
+
+      // carmesh.position.y += 0.1;
+      // carmesh.position.z += 0.1;
+
+      // var frameNumer = requestAnimationFrame( render );
+
+      // console.log(carmesh);
+
+      // debugger
+
+      // console.log(requestAnimationFrame());
+
+       // var frameNumer = requestAnimationFrame( render );
+
+
+ 
+
       effect.render(scene, camera);
     }
 
     function animate(t) {
       requestAnimationFrame(animate);
+
+      timer = clock.getElapsedTime();
+
+      if (timer < 5){
+        carmesh.position.y += 0.1;
+      }
+
+      if ((timer > 5) && (timer < 7)){
+        carmesh.position.z += 4;
+        carmesh.rotation.z += 0.01;
+      } 
+
+      if ((timer > 7) && (carmesh.rotation.y < 1.8)) {
+        carmesh.rotation.y += 0.01;
+        carmesh.rotation.z -= 0.01;
+        // console.log(clock.getElapsedTime());
+      }
+
+      if ((timer > 10) && (carmesh.position.x < 750)) {
+        carmesh.position.x += 4;
+        // console.log(carmesh.position.x);
+        // console.log(timer);
+      }
+
+      if ((timer > 14) && (carmesh.rotation.y < 4)){
+        carmesh.rotation.y += 0.01;
+        // console.log(carmesh.rotation.y);
+        // console.log(timer);
+      }
+
+      if ((timer > 18)){
+        carmesh.position.x -= 6;
+        carmesh.position.z -= 2;
+      }
+
+
+
+
+
+      // console.log(clock.getElapsedTime());
 
       update(clock.getDelta());
       render(clock.getDelta());
