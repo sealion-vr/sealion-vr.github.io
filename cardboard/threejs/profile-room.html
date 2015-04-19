@@ -151,25 +151,27 @@
         /////////
 
 
-    var darkMaterial = new THREE.MeshBasicMaterial( { color: 0xd02000, transparent:true } ); // red
-    var wireframeMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff, transparent:true} );
-    var multiMaterial = [ darkMaterial, wireframeMaterial ];
+    // var darkMaterial = new THREE.MeshBasicMaterial( { color: 0xd02000, transparent:true } ); // red
+    // var multiMaterial = [ darkMaterial, wireframeMaterial ];
+    function layoutBackgroundElements() {
+      var wood = new THREE.MeshLambertMaterial({
+        map: THREE.ImageUtils.loadTexture('wood.jpg'),
+      });
 
-    var wood = new THREE.MeshLambertMaterial({
-      map: THREE.ImageUtils.loadTexture('wood.jpg'),
-    });
+      var bricks = new THREE.MeshLambertMaterial({
+        map: THREE.ImageUtils.loadTexture('bricks.jpg'),
+      });
 
-    var bricks = new THREE.MeshLambertMaterial({
-      map: THREE.ImageUtils.loadTexture('bricks.jpg'),
-    });
+      var woodFloor = new THREE.MeshLambertMaterial({
+        map: THREE.ImageUtils.loadTexture('woodfloor.jpg'),
+      });
 
-    var woodFloor = new THREE.MeshLambertMaterial({
-      map: THREE.ImageUtils.loadTexture('woodfloor.jpg'),
-    });
+      var space = new THREE.MeshLambertMaterial({
+        map: THREE.ImageUtils.loadTexture('space.jpg'),
+      });
+    }
 
-    var space = new THREE.MeshLambertMaterial({
-      map: THREE.ImageUtils.loadTexture('space.jpg'),
-    });
+    layoutBackgroundElements()
 
     var markopic = new THREE.MeshLambertMaterial({
       map: THREE.ImageUtils.loadTexture('marko.jpg'),
@@ -188,6 +190,7 @@
     })
 
     var greenMaterial = new THREE.MeshBasicMaterial( { color: 0x00FF00, transparent:true }); //green
+    var wireframeMaterial = new THREE.MeshBasicMaterial( { color: 0xffffff, transparent:true} );
     var multigreenMaterial = [greenMaterial, wireframeMaterial];
 
     var marko = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(.1, 20, 20, 1, 1, 1),
