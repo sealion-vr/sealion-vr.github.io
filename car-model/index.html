@@ -116,7 +116,7 @@
       // adding car object
 
     loader = new THREE.JSONLoader();
-    var meshCar;
+    // var meshCar;
 
 
     loader.load('car.js', function (geometry, materials) {
@@ -130,7 +130,7 @@
 
       // debugger
 
-      meshCar = new THREE.Mesh(
+      carmesh = new THREE.Mesh(
         geometry,
         material
       );
