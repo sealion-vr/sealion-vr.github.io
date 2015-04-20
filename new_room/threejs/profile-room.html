@@ -328,7 +328,7 @@
 
     ceilingRoom2 = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(115, 5, 123, 1, 1, 1),
     [ customMaterial.woodCeiling ] );
-    ceilingRoom2.position.set(-88,35,101);
+    ceilingRoom2.position.set(-88,32.5,101);
     scene.add(ceilingRoom2);
 
     // var ceiling = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(115, 5, 100, 1, 1, 1),
@@ -455,7 +455,7 @@
         camera.position.z += movementSpeed;
       };
       
-      if ((timer > (startTimer + 6.5)) && (timer < (startTimer + 24))) {
+      if ((timer > (startTimer + 6)) && (timer < (startTimer + 24))) {
         camera.position.x -= movementSpeed;
         // camera.position.z += movementSpeed;
       };
