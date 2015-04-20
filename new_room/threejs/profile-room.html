@@ -50,7 +50,7 @@
       scene = new THREE.Scene();
 
       camera = new THREE.PerspectiveCamera(90, 1, 0.001, 700);
-      // camera.position.set( -70, 85, 175);
+      // camera.position.set( -30, 85, 155);
       camera.position.set( 0, 15, 0);
       scene.add(camera);
 
@@ -326,9 +326,9 @@
     scene.add( garageDoor );
 
 
-    ceilingRoom2 = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(115, 5, 123, 1, 1, 1),
+    ceilingRoom2 = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(119, 5, 123, 1, 1, 1),
     [ customMaterial.woodCeiling ] );
-    ceilingRoom2.position.set(-88,32.5,101);
+    ceilingRoom2.position.set(-90,32.5,101);
     scene.add(ceilingRoom2);
 
     // var ceiling = THREE.SceneUtils.createMultiMaterialObject( new THREE.BoxGeometry(115, 5, 100, 1, 1, 1),
@@ -472,10 +472,6 @@
         // camera.position.z += movementSpeed;
         ceilingRoom2.position.x -= movementSpeed;
       };
-
-      // if ((timer > (startTimer + 1)) && (timer < (startTimer + 8))) {
-        // ceilingRoom2.position.x -= movementSpeed;
-      // };
 
     }
 
